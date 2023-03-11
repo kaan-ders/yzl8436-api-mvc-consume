@@ -1,0 +1,52 @@
+﻿@{
+}
+
+@model TvDetail
+
+<h3>@Model.name</h3>
+
+<table class="table">
+    <tr>
+        <td>
+            <img src="https://image.tmdb.org/t/p/w500/@Model.poster_path" style="max-width:200px;" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>Özet:</b> @Model.overview
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>Son bölüm tarihi: </b> @Model.last_air_date.ToString("dd.MM.yyyy")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>Sezon sayısı: </b> @Model.number_of_seasons sezon
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>Bölüm sayısı: </b> @Model.number_of_episodes bölüm
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>Oyuncular: </b>
+            <table>
+                @foreach (var cast in Model.Cast)
+                {
+                    <tr>
+                        <td>
+                            <img src="https://image.tmdb.org/t/p/w500/@cast.profile_path" style="max-width:100px;" />
+                        </td>
+                        <td>
+                            @cast.name (@cast.character)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+</table>
